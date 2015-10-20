@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Delete {{item.name}}{% endblock %}
+
+{% block content %}
+<h2>Delete {{item.name}}</h2>
+<hr>
+<div class="col-sm-6">
+Are you sure you want to delete {{item.name}}?</br>
+<b>THIS IS PERMANENT!</b></br></br></br></br></br></br>
+
+<form action = '{{url_for('itemDelete', item_id=item.id)}}' method = 'POST'>
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+<input type='submit', value = 'Delete'></br>
+<a style="font-size:90%" href='{{url_for('itemHome', item_id = item.id)}}'>Cancel</a>
+</div>
+<div class=pull-right>
+  {% if item.photo %}
+  <img src={{imgur_medium_thumb(item.photo)}}/></br>
+  {% endif %}
+</div>
+{% endblock %}

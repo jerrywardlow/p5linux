@@ -1,0 +1,7 @@
+.thumb {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    background-position: center center;
+    background-size: cover;
+}

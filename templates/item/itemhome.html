@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}{{item.name}}{% endblock %}
+
+{% block content %}
+
+<h2>{{item.name}}</h2>
+<hr>
+
+<div class="col-sm-4">
+  <p style="padding-bottom: 100px;">{{item.description}}</p>
+
+Item created by {{item.user.name}}</br>
+{% if ownership_status %}
+<a style="font-size:90%" href='{{url_for('itemEdit', item_id = item.id)}}'>Edit Item</a> |
+<a style="font-size:90%" href='{{url_for('itemDelete', item_id = item.id)}}'>Delete Item</a></br>
+{% endif %}
+
+<a style="font-size:90%" href='{{url_for('categoryHome', category_id=item.category.id)}}'>Return to {{item.category.name}}</a></br>
+</div>
+
+<div class=pull-right>
+  {% if item.photo %}
+  <img src={{imgur_medium_thumb(item.photo)}}/></br>
+  {% endif %}
+</div>
+
+{% endblock %}

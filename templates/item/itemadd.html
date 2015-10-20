@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}Add New Item{% endblock %}
+
+{% block content %}
+<h2>Add new item</h2>
+<hr>
+<form action = '{{url_for('itemAdd', category_id = target)}}' method = 'POST' enctype=multipart/form-data>
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+
+Category:</br>
+<select name='category_id'>
+{% for i in categories %}
+<option value={{i.id}} {% if i.id == target %}selected{% endif %}>{{i.name}}</option>
+{% endfor %}
+</select></br>
+
+Name:</br>
+<input type = 'text' size = '30' name = 'name' placeholder = 'Item Name' required></br>
+
+Item Description:</br>
+<textarea name= 'description' rows='10' cols='50' placeholder = 'Description'></textarea></br></br>
+
+Upload Photo:</br>
+<input type=file name=image accept=image/*></br>
+
+</br><input type = 'submit' value = 'Create'></br>
+<a style="font-size:90%" href='{{url_for('index')}}'>Cancel</a></br>
+
+</form>
+
+{% endblock %}

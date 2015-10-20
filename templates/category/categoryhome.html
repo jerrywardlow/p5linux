@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}{{category.name}}{% endblock %}
+
+{% block content %}
+
+<h2>{{category.name}}</h2>
+<hr>
+
+<div class="col-sm-4">
+  <p>{{category.description}}</p>
+  <p>Created by: {{category.user.name}}</br></br>
+
+
+{% for i in items %}
+{%if i.photo %}
+<img src={{imgur_small_square(i.photo)}} title={{i.name}}>
+{% else %}
+<img src=/static/noimg.png height=90px title='{{i.name}}'>
+{% endif %}
+</br><a style="font-size:120%" href='{{url_for('itemHome', item_id = i.id)}}'>{{i.name}}</a>
+</br></br>
+{% endfor %}
+
+{% if privacy_status %}
+<a style="font-size:90%" href='{{url_for('itemAdd', category_id = category.id)}}'>Add a new item in {{category.name}}</a></br>
+{% if ownership_status %}
+<a style="font-size:90%" href='{{url_for('categoryEdit', category_id = category.id)}}'>Edit Category</a>
+|
+<a style="font-size:90%" href='{{url_for('categoryDelete', category_id = category.id)}}'>Delete Category</a></br>
+{% endif %}
+{% endif %}
+</div>
+
+<div class=pull-right>
+  {% if category.photo %}
+  <img src={{imgur_medium_thumb(category.photo)}}/></br>
+  {% endif %}
+</div>
+
+
+{% endblock %}

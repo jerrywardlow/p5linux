@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Delete {{category.name}}{% endblock %}
+
+{% block content %}
+<h2>Delete {{category.name}}</h2>
+<hr>
+Are you sure you want to delete {{category.name}}?</br>
+
+<b>THIS IS PERMANENT AND WILL DELETE ALL ASSOCIATED ITEMS!!</b></br></br></br></br></br></br>
+
+<form action = '{{url_for('categoryDelete', category_id=category.id)}}' method = 'POST'>
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+<input type='submit', value = 'Delete'></br>
+<a style="font-size:90%" href='{{url_for('categoryHome', category_id = category.id)}}'>Cancel</a>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}XML{% endblock %}
+
+{% block content %}
+
+<h2>Using XML</h2>
+<hr>
+<p>XML endpoints can be accessed using the following syntax:</p>
+<p>List of all categories: <code>localhost:5000/categories/XML/</code></p>
+<p>List of all items: <code>localhost:5000/items/XML/</code></p>
+<p>Information about a speicifc category: <code>localhost:5000/category/'Category ID'/XML/</code></p>
+<p>Information about a specific item: <code>localhost:5000/item/'Item ID'/XML</code></p>
+<p>Information about all items in a specific category: <code>localhost:5000/category/'Category ID'/items/XML/</code></p>
+
+
+{% endblock %}

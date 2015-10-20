@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}Edit {{item.name}}{% endblock %}
+
+{% block content %}
+
+<h2>Edit {{item.name}}</h2>
+<hr>
+
+<div class="col-sm-6">
+<form action = '{{url_for('itemEdit', item_id = item.id)}}' method = 'POST' enctype=multipart/form-data>
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+
+Category:</br>
+<select name='category_id'>
+{% for i in categories %}
+{% if i.id == item.category_id %}
+<option value={{i.id}} selected>{{i.name}}</option>
+{% else %}
+<option value={{i.id}}>{{i.name}}</option>
+{% endif %}
+{% endfor %}
+</select></br>
+
+Name:</br>
+<input type = 'text' size = '30' name = 'name' value = '{{item.name}}' required></br>
+
+Item Description:</br>
+<textarea name= 'description' rows='10' cols='50'>{{item.description}}</textarea></br></br>
+
+Upload New Photo:</br>
+<input type= 'file' name= 'image' accept=image/*></br>
+
+</br><input type = 'submit' value = 'Update'>
+<input type= 'reset' value= 'Reset Forms'></br>
+
+</form>
+<a style="font-size:90%" href='{{url_for('itemHome', item_id = item.id)}}'>Cancel</a></br>
+</div>
+
+<div class=pull-right>
+  {% if item.photo %}
+  <img src={{imgur_medium_thumb(item.photo)}}/></br>
+  {% endif %}
+</div>
+
+{% endblock %}
