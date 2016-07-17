@@ -86,4 +86,4 @@ Configuring PostgreSQL is made simple with a few quick commands as the `postgres
 
 **Viewing the Completed Project**
 
-Now that we have successfully configured our web server, we can navigate to the EC2 IP address in a web browser to see our Flask app being hosted. This project is also currently hosted at http://54.186.251.240/, though this is subject to change at any moment.
+Now that we have successfully configured our web server, we can navigate to the EC2 IP address in a web browser to see our Flask app being hosted.
