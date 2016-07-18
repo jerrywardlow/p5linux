@@ -1,1 +1,13 @@
 ---
+
+- name: Lockdown with UFW
+  ufw:
+    state: enabled
+    policy: deny
+    logging: "on"
+
+- name: UFW - Enable ports
+  ufw:
+    rule: "{{ item.rule }}"
+    port: "{{ item.port }}"
+  with_items: "{{ ufw_ports }}"
