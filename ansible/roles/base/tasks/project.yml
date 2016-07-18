@@ -1,1 +1,11 @@
 ---
+
+- stat:
+    path: "/var/www/p5linux"
+  register: project_path_status
+
+- name: Clone project repository
+  git:
+    repo: http://github.com/jerrywardlow/p3catalog
+    dest: /tmp
+  when: project_path_status.stat.exists == False
