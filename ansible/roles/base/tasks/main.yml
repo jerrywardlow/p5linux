@@ -15,6 +15,22 @@
       - psycopg2
       - python-pip
 
+- name: Ditch password SSH authentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication"
+    line: "PasswordAuthentication no"
+    state: present
+  notify: restart ssh
+
+- name: Disable root SSH access
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin no"
+    state: present
+  notify: restart ssh
+
 - include: ufw.yml
 
 - include: project.yml
