@@ -14,3 +14,11 @@
       - postgresql
       - psycopg2
       - python-pip
+
+- include: ufw.yml
+
+- include: project.yml
+
+- include: apache.yml
+
+- include: database.yml
