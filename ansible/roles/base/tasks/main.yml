@@ -15,6 +15,10 @@
       - psycopg2
       - python-pip
 
+- name: Upgrade all packages
+  apt:
+    upgrade: full
+
 - name: Ditch password SSH authentication
   lineinfile:
     dest: /etc/ssh/sshd_config
