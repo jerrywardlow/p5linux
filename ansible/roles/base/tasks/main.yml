@@ -35,6 +35,8 @@
     state: present
   notify: restart ssh
 
+- include: user.yml
+
 - include: ufw.yml
 
 - include: project.yml
