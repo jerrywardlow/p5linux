@@ -1,1 +1,7 @@
 ---
+
+- name: Add new user "grader"
+  user:
+    name: grader
+    groups: sudo
+    append: yes
