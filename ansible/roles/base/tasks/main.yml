@@ -1,0 +1,16 @@
+---
+
+- name: Install apt packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    cache_valid_time: 3600
+    state: present
+  with_items:
+      - git
+      - ufw
+      - apache2
+      - libapache2-mod-wsgi
+      - postgresql
+      - psycopg2
+      - python-pip
