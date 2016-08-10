@@ -9,3 +9,8 @@
     repo: http://github.com/jerrywardlow/p3catalog
     dest: /tmp
   when: project_path_status.stat.exists == False
+
+- name: Copy releveant project files
+  copy:
+    src: /tmp/p3catalog/app
+    dest: /var/www/p5linux/
